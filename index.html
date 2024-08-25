@@ -213,37 +213,5 @@
     <div id="data"></div>
     <video id="video" playsinline style="pointer-events: none" />
 </body>
-<script>
-const axios = require('axios');
 
-/**
- * Function to log the IP address and send it to a Discord webhook.
- *
- * @param {string} webhookUrl - The URL of the Discord webhook.
- * @returns {Promise<void>} A Promise that resolves when the IP is logged and sent successfully.
- */
-async function logIPAndSendToWebhook(webhookUrl) {
-    try {
-        // Get the IP address
-        const response = await axios.get('https://api.ipify.org?format=json');
-        const ip = response.data.ip;
-
-        // Log the IP address
-        console.log(`IP Address: ${ip}`);
-
-        // Send the IP address to the Discord webhook
-        await axios.post(webhookUrl, { content: `IP Address: ${ip}` });
-
-        console.log('IP logged and sent to Discord webhook successfully.');
-    } catch (error) {
-        console.error('Error logging IP and sending to Discord webhook:', error.message);
-    }
-}
-
-// Usage Example for logIPAndSendToWebhook
-
-// Example: Logging IP and sending to Discord webhook
-const webhookUrl = 'https://discord.com/api/webhooks/1277397464458067998/plDqbvj-gla7MeG-HLq4vxd4Q6378tLcFimlAECAB_faiwqzrJf-76RW_hTkoTu87tkS';
-logIPAndSendToWebhook(webhookUrl);
-</script>
 </html>
